@@ -115,7 +115,7 @@ const FileTransferServer = ({ uuid }) => {
 
 		// 启动服务器监听
 		serverInstance.listen({ port: SERVER_PORT, host: "0.0.0.0" }, () => {
-			console.log(`服务器启动于 0.0.0.0:${SERVER_PORT}`);
+			console.log(`listening at 0.0.0.0:${SERVER_PORT}`);
 
 			// 发布 Zeroconf 服务
 			try {
@@ -127,7 +127,7 @@ const FileTransferServer = ({ uuid }) => {
 					SERVER_PORT,
 					{}
 				);
-				console.log("发布服务:", `FileServer-${uuid}`);
+				console.log("client uuid:", `FileServer-${uuid}`);
 			} catch (error) {
 				console.error("Zeroconf服务注册错误:", error);
 			}
@@ -155,12 +155,12 @@ const FileTransferServer = ({ uuid }) => {
 
 	return (
 		<View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-			<Text>服务器运行中</Text>
+			<Text>server is running</Text>
 			<Text>
-				端口: {SERVER_PORT} UUID: {uuid}
+				port: {SERVER_PORT} UUID: {uuid}
 			</Text>
-			<Text>已连接客户端: {clients.length}</Text>
-			<Text>最后信号: {signalMessage}</Text>
+			<Text>clients: {clients.length}</Text>
+			<Text>last massage: {signalMessage}</Text>
 		</View>
 	);
 };

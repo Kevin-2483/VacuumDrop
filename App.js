@@ -105,13 +105,13 @@ export default function App() {
 	return (
 		<View style={styles.container}>
 			<FileTransferServer uuid={uniqueId} />
-			<Text>选择并发送文件</Text>
+			<Text>Select and send file</Text>
 			<FilePicker onFileSelected={handleFileSelected} />
-			<Text>已选择文件: {file ? file[0].name : "无"}</Text>
+			<Text>Selected file: {file ? file[0].name : "无"}</Text>
 
-			<Text>服务发现</Text>
+			<Text>Service discovery</Text>
 			{services.length === 0 ? (
-				<Text>没有发现服务</Text>
+				<Text>No services discovered</Text>
 			) : (
 				<View>
 					<Picker
@@ -132,18 +132,18 @@ export default function App() {
 
 			<TextInput
 				style={styles.input}
-				placeholder="输入要发送的文本"
+				placeholder="Enter the text to send"
 				value={text}
 				onChangeText={setText}
 			/>
-			<Button title="发送文本到服务器" onPress={sendTextToServer} />
+			<Button title="Send text to server" onPress={sendTextToServer} />
 
 			<FileTransferComponent
 				selectedService={selectedService}
 				file={file}
 				onTransferProgress={(progress) => {
 					// 可选：处理进度，例如更新UI
-					console.log(`传输进度: ${progress}%`);
+					console.log(`Enter the text to send: ${progress}%`);
 				}}
 			/>
 		</View>

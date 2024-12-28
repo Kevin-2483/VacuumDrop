@@ -16,7 +16,7 @@ const FileTransferComponent = ({
 
 	const sendFileToServer = async () => {
 		if (!file || !selectedService) {
-			Alert.alert("错误", "请选择文件和服务");
+			Alert.alert("Error", "Please select a file and a service");
 			return;
 		}
 
@@ -97,13 +97,13 @@ const FileTransferComponent = ({
 						);
 
 						onTransferProgress(progress);
-						setTransferStatus(`传输中: ${progress.toFixed(2)}%`);
+						setTransferStatus(`Transfering: ${progress.toFixed(2)}%`);
 					}
 
 					// 发送传输结束标记
 					socket.write("FILE_TRANSFER_END");
 					console.log("文件传输结束标记已发送");
-					setTransferStatus("传输完成");
+					setTransferStatus("Transfer completed");
 				}
 			);
 
@@ -114,10 +114,10 @@ const FileTransferComponent = ({
 					console.log("服务器响应:", response);
 
 					if (response.includes("FILE_TRANSFER_ACK")) {
-						setTransferStatus("文件传输成功");
+						setTransferStatus("File transfer successful");
 						console.log("服务器确认文件传输成功");
 					} else if (response.includes("FILE_TRANSFER_ERROR")) {
-						setTransferStatus("服务器处理文件出错");
+						setTransferStatus("Server error processing the file");
 						console.error("服务器报告文件传输错误");
 					}
 				}
@@ -128,8 +128,8 @@ const FileTransferComponent = ({
 					errorMessage: error.message,
 					errorCode: error.code,
 				});
-				setTransferStatus(`传输失败: ${error.message}`);
-				Alert.alert("传输错误", error.message);
+				setTransferStatus(`File transfer error: ${error.message}`);
+				Alert.alert("transfer error", error.message);
 			});
 
 			socket.on("close", (hadError) => {
@@ -143,15 +143,15 @@ const FileTransferComponent = ({
 				code: error.code,
 			});
 
-			setTransferStatus(`错误: ${error.message}`);
-			Alert.alert("错误", `无法读取文件: ${error.message}`);
+			setTransferStatus(`Error: ${error.message}`);
+			Alert.alert("error", `can't read file: ${error.message}`);
 		}
 	};
 
 	return (
 		<View style={styles.container}>
 			<Button
-				title="发送文件"
+				title="Send file"
 				onPress={sendFileToServer}
 				disabled={!file || !selectedService}
 			/>

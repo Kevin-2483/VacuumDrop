@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Button, Text } from "react-native";
 import DocumentPicker from "react-native-document-picker";
-import TcpSocket from "react-native-tcp-socket";
+
 
 const FilePicker = ({ onFileSelected }) => {
 	// 选择文件并将其传递给父组件
@@ -27,7 +27,7 @@ const FilePicker = ({ onFileSelected }) => {
 
 	return (
 		<View>
-			<Button title="选择文件" onPress={handleFilePick} />
+			<Button title="Select file" onPress={handleFilePick} />
 		</View>
 	);
 };
