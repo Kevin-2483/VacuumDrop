@@ -10,21 +10,20 @@
   },
   "dependencies": {
     "@react-native-picker/picker": "^2.10.2",
-    "buffer": "^6.0.3",
     "expo": "~52.0.18",
-    "expo-status-bar": "~2.0.0",
-    "expo-system-ui": "~4.0.6",
     "react": "18.3.1",
     "react-native": "0.76.5",
     "react-native-document-picker": "^9.3.1",
     "react-native-fs": "^2.20.0",
+    "react-native-get-random-values": "~1.11.0",
     "react-native-tcp-socket": "^6.2.0",
     "react-native-zeroconf": "^0.13.8",
-    "uuid": "^11.0.3",
-    "react-native-get-random-values": "~1.11.0"
+    "uuid": "^11.0.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "@types/react": "~18.3.12",
+    "typescript": "^5.3.3"
   },
   "private": true
 }

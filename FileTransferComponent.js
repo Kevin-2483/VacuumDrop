@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { View, Text, Button, StyleSheet, Alert } from "react-native";
 import TcpSocket from "react-native-tcp-socket";
 import RNFS from "react-native-fs";
+import { NativeModules } from "react-native";
+
+const { ContentUriConverter } = NativeModules;
+
 
 const FileTransferComponent = ({
 	selectedService,
@@ -28,7 +32,9 @@ const FileTransferComponent = ({
 			});
 
       // 读取文件信息
-      const correctedUri = fileToTransfer.uri.replace("file://", "content://");
+      const correctedUri = await ContentUriConverter.getFilePathFromUri(
+				fileToTransfer.uri
+			);
       console.log("correctedUri", correctedUri);
       const fileStats = await RNFS.stat(correctedUri);
       
